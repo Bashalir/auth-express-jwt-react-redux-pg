@@ -9,6 +9,12 @@ export default function login(state = initialState, action) {
   console.log(action);
 
   switch (action.type) {
+     case types.POST_SIGNUP_REQUEST:
+      return {
+        isAuth: action.payload ? true : false,
+        user: action.payload
+      };
+      
     case types.GET_USER_REQUEST:
       return {
         isAuth: action.payload ? true : false,
@@ -32,3 +38,4 @@ export default function login(state = initialState, action) {
       return state
   }
 }
+

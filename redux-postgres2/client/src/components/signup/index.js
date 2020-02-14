@@ -17,7 +17,9 @@ const SignUp = props => {
 
   return (
     <>
-      {props.user && props.isAuth && <Redirect to="/" />}
+    
+      {props.user && <Redirect to="/" />}
+      {console.log('tutu', props)}
       <form onSubmit={onSubmit}>
         <h1>Sign Up Below!</h1>
         <input

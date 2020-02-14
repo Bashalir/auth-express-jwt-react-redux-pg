@@ -15,6 +15,7 @@ export const postSignUpAction = () => {
     return fetch("/api/check/token")
       .then(response => response.json())
       .then(json => {
+        console.log(json);
         dispatch({ type: types.POST_SIGNUP_REQUEST, payload: json });
       });
   };
@@ -49,6 +50,7 @@ export const signUpAction = values => {
       }
     })
       .then(res => {
+        console.log("restutu", res);
         dispatch(postSignUpAction());
       })
       .catch(err => {

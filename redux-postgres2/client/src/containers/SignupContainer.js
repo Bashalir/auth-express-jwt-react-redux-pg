@@ -4,7 +4,7 @@ import { signUpAction } from "../actions";
 
 const mapStateToProps = (state, props) => {
   console.log(state);
-  return state.signup;
+  return state.login;
 };
 
 const mapDispatchToProps = dispatch => ({

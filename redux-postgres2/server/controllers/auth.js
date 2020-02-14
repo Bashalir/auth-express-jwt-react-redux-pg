@@ -4,7 +4,7 @@ dotenv.config();
 const { hash, compare } = require("bcryptjs");
 const { Pool } = require("pg");
 
-console.log('tutu', process.env.DATABASE_URL)
+console.log("tutu", process.env.DATABASE_URL);
 const connectionString = process.env.DATABASE_URL;
 const pool = new Pool({
   connectionString: connectionString,
@@ -14,12 +14,12 @@ pool.connect();
 
 require("../init_db")(pool);
 
-
 exports.signup = function(req, res) {
   if (!req.body.email || !req.body.password) {
     return res.send(401, "Invalid Credentials");
   } else {
     try {
+      console.log(req.body.email, req.body.password);
       pool.query(
         "SELECT * from users where email = $1",
         [req.body.email],
@@ -39,14 +39,13 @@ exports.signup = function(req, res) {
             );
             res.cookie("token", token, { httpOnly: true }).sendStatus(200);
           } else {
-            res.send("User already exists in database");
+            res.status(400).send("User already exists in database");
           }
         }
       );
     } catch (err) {}
   }
 };
-
 
 exports.login = function(req, res) {
   if (!req.body.email) {
@@ -79,4 +78,4 @@ exports.login = function(req, res) {
       }
     );
   }
-}
+};

@@ -37,6 +37,8 @@ const Login = props => {
 
   return (
     <>
+
+    
       {props.user && props.isAuth && <Redirect to="/" />}
       <form onSubmit={onSubmit}>
         <h1>Login Below!</h1>
